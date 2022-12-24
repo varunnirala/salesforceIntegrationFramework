@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>IntegrationLayerVirtualClass</members>
+        <members>IntegrationFrameworkCalloutMockTest</members>
+        <members>IntegrationContractLayerInterface</members>
+        <members>IntegrationFrameworkCalloutLayer</members>
+        <members>IntegrationLayerVirtualClass</members>
+        <members>IntegrationContractedResponseInterface</members>
+        <members>IntegrationFrameworkCalloutLayerTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Integration_Framework_Metadata__mdt</​members>
+        <members>Integration_Framework_Response_Access__mdt</​members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Integration_Framework_Metadata.INT0001</members>
+        <members>Integration_Framework_Response_Access.INT0001_Persona_Mapping_1</members>
+        <members>Integration_Framework_Response_Access.INT0001_Persona_Mapping_2</members>
+        <members>Integration_Framework_Response_Access.INT0001_Persona_Mapping_3</members>
+        <name>CustomMetadata</name>
+    </types>    
+    <types>
+        <members>Integration_Framework_Metadata__mdt-Integration Framework Metadata Layout</members>
+        <members>Integration_Framework_Response_Access__mdt-Integration Framework Response Access Layout</members>
+        <name>Layout</name>
+    </types>    
+    <version>55.0</version>
+</Package>
+
+

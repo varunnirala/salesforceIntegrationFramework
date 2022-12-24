@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>INT0001 - Persona Mapping 3</label>
+    <protected>false</protected>
+    <values>
+        <field>Integration_Framework__c</field>
+        <value xsi:type="xsd:string">INT0001</value>
+    </values>
+    <values>
+        <field>Permission_Set_Name__c</field>
+        <value xsi:type="xsd:string">Partiall_Deal_Details</value>
+    </values>
+    <values>
+        <field>Response_Contract_Name__c</field>
+        <value xsi:type="xsd:string">DealContractedResponse_Partial</value>
+    </values>
+</CustomMetadata>

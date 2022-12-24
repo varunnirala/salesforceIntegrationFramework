@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resource_URL__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Field stores the REST URL portion after the base URL.</inlineHelpText>
+    <label>Rest Resource</label>
+    <required>true</required>
+    <type>Url</type>
+</CustomField>
