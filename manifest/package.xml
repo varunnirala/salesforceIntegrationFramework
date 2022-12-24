@@ -8,6 +8,8 @@
         <members>IntegrationLayerVirtualClass</members>
         <members>IntegrationContractedResponseInterface</members>
         <members>IntegrationFrameworkCalloutLayerTest</members>
+        <members>ExampleSecureDealDetailsContract</members>
+        <members>ExampleDealLWCController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -27,6 +29,10 @@
         <members>Integration_Framework_Response_Access__mdt-Integration Framework Response Access Layout</members>
         <name>Layout</name>
     </types>    
+    <types>
+        <members>exampleIntegrationFramework</members>
+        <name>LightningComponentBundle</name>
+    </types>
     <version>55.0</version>
 </Package>
 

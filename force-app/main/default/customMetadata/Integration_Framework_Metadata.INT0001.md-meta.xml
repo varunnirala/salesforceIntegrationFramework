@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Integration_Contract__c</field>
-        <value xsi:type="xsd:string">SecureDealDetailsContract</value>
+        <value xsi:type="xsd:string">ExampleSecureDealDetailsContract</value>
     </values>
     <values>
         <field>Method__c</field>
