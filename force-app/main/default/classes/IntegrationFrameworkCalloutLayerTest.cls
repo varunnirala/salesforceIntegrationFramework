@@ -10,9 +10,8 @@ public class IntegrationFrameworkCalloutLayerTest {
         
         Map<String,String> dealQuery = new Map<String,String>();
         dealQuery.put('dealCode','deal-2021');
-        IntegrationContractLayerInterface  integration001 = IntegrationFrameworkCalloutLayer.invoke('INT0001',dealQuery);
-        ExampleSecureDealDetailsContract.DealContractedResponse_Limited res 
-                    = (ExampleSecureDealDetailsContract.DealContractedResponse_Limited) integration001.getResponseContractedDetails();
+    	IntegrationContractLayerInterface  integration001 = IntegrationFrameworkCalloutLayer.invoke('INT0001',dealQuery);
+        IntegrationContractedResponseInterface contractedResponse = integration001.getResponseContractedDetails();
 
         Test.stopTest();
 

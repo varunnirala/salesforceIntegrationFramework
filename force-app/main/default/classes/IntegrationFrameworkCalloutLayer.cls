@@ -14,6 +14,10 @@ public class IntegrationFrameworkCalloutLayer {
                 = Integration_Framework_Metadata__mdt.getInstance(integrationCode);
         System.debug(integrationMeta.Content_Type__c);
         String contractedResponseClass = getContractedResponseClass(integrationMeta);
+        if(contractedResponseClass==null){
+          System.debug('No contract found for the loggged in user, exiting program.');
+          return null;
+        }
         IntegrationContractLayerInterface integrationLayer = (IntegrationContractLayerInterface)Type.forName(integrationMeta.Integration_Contract__c).newInstance();
         integrationLayer.setRequestObjectJson(integrationCode,requestObj);
         Map<String,String> integrationHeader = new Map<String,String>();
@@ -70,17 +74,27 @@ public class IntegrationFrameworkCalloutLayer {
     }
 
     private static String getContractedResponseClass(Integration_Framework_Metadata__mdt integrationMeta){
-      Integration_Framework_Response_Access__mdt integrationPermissionSet = 
-          	[select Id,Permission_Set_Name__c,Response_Contract_Name__c from Integration_Framework_Response_Access__mdt 
-            where Integration_Framework__c = :integrationMeta.Id limit 1];
-      System.debug(integrationPermissionSet);
-      Id userId = UserInfo.getUserId();
-      PermissionSetAssignment ps = [select Id from PermissionSetAssignment 
-      where AssigneeId=:userId and IsActive=true and PermissionSet.Name = :integrationPermissionSet.Permission_Set_Name__c];
-      String contractName = '';
-      if(ps!=null){
-          contractName = integrationPermissionSet.Response_Contract_Name__c;
-      } 
+      String contractName = null;
+      try{
+          List<Integration_Framework_Response_Access__mdt> integrationPermissionSet = 
+                [select Id,Permission_Set_Name__c,Response_Contract_Name__c from Integration_Framework_Response_Access__mdt 
+                where Integration_Framework__c = :integrationMeta.Id ];
+          
+            Map<String,String> permissionSetNamesMap = new Map<String,String>();
+            for(Integration_Framework_Response_Access__mdt resConfig:integrationPermissionSet){
+                permissionSetNamesMap.put(resConfig.Permission_Set_Name__c,resConfig.Response_Contract_Name__c);
+            }
+          
+          Id userId = UserInfo.getUserId();
+          PermissionSetAssignment ps = [select Id,PermissionSet.Name from PermissionSetAssignment 
+          where AssigneeId=:userId and IsActive=true and PermissionSet.Name in :permissionSetNamesMap.keySet() limit 1];
+            
+          if(ps!=null){
+              contractName = permissionSetNamesMap.get(ps.PermissionSet.Name);//.Response_Contract_Name__c;
+          } 
+      }catch(Exception e){
+        System.debug(e.getMessage());
+      }
       return contractName;
     }
 
